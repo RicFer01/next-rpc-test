@@ -1,7 +1,14 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import {
+  makeAgoricChainStorageWatcher,
+  // AgoricChainStoragePathKind,
+} from '@agoric/rpc';
 
+// chainId=agoric-3 and apiAddr=https://main-a.api.agoric.net:443
 export default function Home() {
+  const watcher = makeAgoricChainStorageWatcher('https://main.rpc.agoric.net:443', 'agoric-emerynet-8'); 
+
   return (
     <main className={styles.main}>
       <div className={styles.description}>
