@@ -14,9 +14,28 @@
 
 // Error.stackTraceLimit = Infinity;
 
-(async () => {
+// (async () => {
+//   await import("ses"); // adds lockdown, harden, and Compartment
+//   const consoleTaming = process.env.NEXT_PUBLIC_CONSOLE_TAMING  ? 'unsafe' : 'safe';
+
+//   lockdown({
+//     errorTaming: "unsafe",
+//     overrideTaming: "severe",
+//     consoleTaming,
+//   });
+
+//   Error.stackTraceLimit = Infinity;
+// })();
+
+// export default function initiateLockdown() {
+//   return Promise.resolve();
+// }
+
+
+export async function initiateLockdown() {
   await import("ses"); // adds lockdown, harden, and Compartment
-  const consoleTaming = process.env.NEXT_PUBLIC_CONSOLE_TAMING  ? 'unsafe' : 'safe';
+
+  const consoleTaming = process.env.NEXT_PUBLIC_CONSOLE_TAMING ? 'unsafe' : 'safe';
 
   lockdown({
     errorTaming: "unsafe",
@@ -26,8 +45,5 @@
 
   Error.stackTraceLimit = Infinity;
 
-})();
-
-export default function initiateLockdown() {
   return Promise.resolve();
 }
